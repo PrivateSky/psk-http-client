@@ -26,7 +26,10 @@ var postResponses = {
     "server/agentForANode":function(data){
         setTimeout(function(){
             fakeMq.push(data);
-        },3000);
+        },1000);
+        setTimeout(function(){
+            fakeMq.push(data);
+        },2000);
         return "ok";
     }
 }
@@ -43,12 +46,16 @@ fakeVMQ.initServer(getResponses, postResponses);
 
 $$.remote.newEndPoint("clientAgent", "server/agentForANode","server/myAgent","cryptoInfo");
 
-$$.remote.createRequestManager(100);
+$$.remote.createRequestManager(300);
 
-$$.remote.clientAgent.startSwarm("testSwarm.js", "Hello", "World").onReturn(function(err, result){
-    console.log("Result 1:", result);
+$$.remote.clientAgent.startSwarm("testSwarm.js", "Hello", "World").on("Hello",function(err, result){
+    console.log("Result from on:", result);
 });
 
 $$.remote.clientAgent.startSwarm("testSwarm.js", "Hello", "World").onReturn(function(err, result){
-    console.log("Result 2:", result);
+    console.log("Result from onReturn:", result);
 });
+
+setTimeout(function(){
+    $$.remote.clientAgent.startSwarm("testSwarm.js", "Hello", "World");
+},200);
