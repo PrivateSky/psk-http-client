@@ -2,10 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>PSK test</title>
     <script type="text/javascript" src="lib/psk-abstract-client.js"></script>
+    <script type="text/javascript" src="lib/psk-browser-client.js"></script>
 </head>
 <body>
 
+
+<script>
+
+    $$.remote.createRequestManager(1000);
+    var client = new PskHttpClient("http://localhost:9080/CSB/rafagaSafe22","http://localhost:9080/clientAgent");
+    client.startSwarm("testSwarm.js", "Hello", "World").on("Hello",function(err, result){
+        console.log("Result from on:", result);
+    });
+
+
+    setTimeout(function(){
+        var client2 = new PskHttpClient("http://localhost:9080/CSB/rafagaSafe22","http://localhost:9080/clientAgent");
+        client2.startSwarm("testSwarm.js", "Hello", "World").on("Hello",function(err, result){
+            console.log("Result from on:", result);
+        });
+    },1000);
+
+
+
+</script>
 </body>
 </html>
