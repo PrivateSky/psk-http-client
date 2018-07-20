@@ -10,22 +10,17 @@
 
 
 <script>
-
     $$.remote.createRequestManager(1000);
-    var client = new PskHttpClient("http://localhost:9080/CSB/rafagaSafe22","http://localhost:9080/clientAgent");
-    client.startSwarm("testSwarm.js", "Hello", "World").on("Hello",function(err, result){
-        console.log("Result from on:", result);
-    });
+    $$.remote.newEndPoint("test","http://localhost:9080/test12345678","http://localhost:9080/test12345678","mySecret");
 
+    for(var i=0; i<=50; i++){
+        setTimeout(function(){
+            $$.remote.test.startSwarm("testSwarm.js", "Hello", "World").onReturn(function(err, result){
+                console.log("Result from on:", result);
+            });
+        },i*500);
 
-    setTimeout(function(){
-        var client2 = new PskHttpClient("http://localhost:9080/CSB/rafagaSafe22","http://localhost:9080/clientAgent");
-        client2.startSwarm("testSwarm.js", "Hello", "World").on("Hello",function(err, result){
-            console.log("Result from on:", result);
-        });
-    },1000);
-
-
+    }
 
 </script>
 </body>
