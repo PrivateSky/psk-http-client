@@ -1,5 +1,5 @@
 
-require("../lib/psk-abstract-client");
+require("../../lib/psk-abstract-client");
 var fakeVMQ = require("./FakeVirtualMQ");
 
 
