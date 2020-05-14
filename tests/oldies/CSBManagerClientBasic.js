@@ -18,7 +18,7 @@ const flow = $$.flow.describe('CSBmanagerClientBasic', {
 	init: function (callback) {
 		this.cb = callback;
 		fileStateManager.saveState([tempFolder], () => {
-			this.virtualMq = VirtualMQ.createVirtualMQ(port, tempFolder + '/CSB');
+			this.virtualMq = VirtualMQ.createPskWebServer(port, tempFolder + '/CSB');
 			setTimeout(() => {
 				this.postFile(() => {
 					this.getFile();

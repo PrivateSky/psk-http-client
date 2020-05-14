@@ -14,7 +14,7 @@ const mainFolder = "uploads";
 
 assert.callback("BasicNodeHttpClientTest", function(callback){
 	function prepareTest(){
-		var server = require("virtualmq").createVirtualMQ(testPort, path.join(baseFolder, mainFolder), runningTests);
+		var server = require("virtualmq").createPskWebServer(testPort, path.join(baseFolder, mainFolder), runningTests);
 	}
 
 	function runningTests(){
