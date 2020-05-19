@@ -17,7 +17,7 @@ const flow = $$.flow.describe('CSBmanagerClientGetFail', {
 	init: function (callback) {
 		this.cb = callback;
 		fileStateManager.saveState([tempFolder], () => {
-			this.virtualMq = VirtualMQ.createVirtualMQ(port, tempFolder + '/CSB');
+			this.virtualMq = VirtualMQ.createPskWebServer(port, tempFolder + '/CSB');
 			setTimeout(() => this.tryGet(), 500);
 		});
 	},
