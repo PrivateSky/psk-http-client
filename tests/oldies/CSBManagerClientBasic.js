@@ -27,7 +27,7 @@ const flow = $$.flow.describe('CSBmanagerClientBasic', {
 		});
 	},
 	postFile: function (callback) {
-		const buffer = Buffer.alloc(fileSize, 'a');
+		const buffer = $$.Buffer.alloc(fileSize, 'a');
 		$$.remote.doHttpPost(testUrl, buffer, (err) => {
 			assert.false(err, 'Post to virtualMq has failed');
 			callback();
