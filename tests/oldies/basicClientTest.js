@@ -1,5 +1,5 @@
-require("../../../../psknode/bundles/pskruntime");
-require("../../../../psknode/bundles/virtualMQ");
+require("../../../../builds/output/pskruntime");
+require("../../../../builds/output/virtualMQ");
 const path = require("path");
 require("psk-http-client");
 
